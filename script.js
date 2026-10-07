@@ -10,7 +10,7 @@
     birthday: { n: "Birthday",  e: "🎂", d: ["🎂","🎈","🎉","🎁","🧁"], a: "#e2527c", c: ["#fff0d2","#ffdfee","#e6f3ff"], t: "A birthday surprise for you", s: "Someone made this just for your day." },
     thanks:   { n: "Thank You", e: "🙏", d: ["🙏","💐","🤍","🌿","✨"], a: "#2f8f83", c: ["#dff5ec","#fff6df","#e8f1ff"], t: "A thank-you, just for you", s: "Someone wanted you to know." }
   };
-  var MSG_MAX = 250, NAME_MAX = 40;
+  var MSG_MAX = 1000, NAME_MAX = 40;
   var theme = "flowers", previewing = false;
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var $ = function (id) { return document.getElementById(id); };
