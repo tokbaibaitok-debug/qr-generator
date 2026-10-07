@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Little Surprise – make a digital gift</title>
+<meta name="description" content="Make a personalized digital gift, get a QR card, and give it to someone special. No sign-up.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- QR library first, then our script (both deferred, so they run in this order) -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script defer src="script.js"></script>
+</head>
+<body>
+
+<!-- CREATOR: what the person making the gift sees -->
+<main id="creator" class="wrap">
+  <header class="top">
+    <h1>Create a Little Surprise 💌</h1>
+    <p class="sub">Make a personalized digital gift and share it with someone special.</p>
+  </header>
+
+  <form id="form" class="panel" novalidate>
+    <label for="rec">Recipient name</label>
+    <input id="rec" maxlength="40" placeholder="Enter their name" autocomplete="off">
+
+    <label for="msg">Your message</label>
+    <textarea id="msg" maxlength="250" placeholder="Write your message here..."></textarea>
+    <p class="hint"><span id="cnt">0</span>/250. Shorter messages make a QR code that is easier to scan.</p>
+
+    <label for="snd">Your name</label>
+    <input id="snd" maxlength="40" placeholder="Your name" autocomplete="off">
+
+    <fieldset>
+      <legend>Choose a theme</legend>
+      <div id="themes" class="themes"></div>
+    </fieldset>
+
+    <p id="err" class="err" role="alert"></p>
+    <button class="btn main" type="submit">Create My Gift 💌</button>
+    <p class="note">🔓 Anyone with the gift link can view this message. Please don't include passwords or secrets.</p>
+  </form>
+
+  <section id="result" class="hidden">
+    <h2 class="ready">Your gift is ready! 🎁</h2>
+
+    <!-- This card is the only thing that prints -->
+    <div id="card" class="qrcard">
+      <div class="big">💌</div>
+      <h3>A little surprise<br>for you</h3>
+      <div id="qr" class="qrbox"></div>
+      <p class="scan">Scan me</p>
+      <p class="give">Give this card to someone special.</p>
+    </div>
+
+    <div class="panel">
+      <label for="link">Gift link</label>
+      <input id="link" readonly>
+      <div class="row">
+        <button id="copy" class="btn" type="button">Copy Link</button>
+        <button id="prev" class="btn" type="button">Preview Gift</button>
+      </div>
+      <button id="print" class="btn main" type="button">Print QR Card</button>
+      <p class="note">Tip: when printing, keep the QR code at least 5 cm wide. You can also just screenshot the card.</p>
+      <p class="note">🔓 Anyone with this link or QR code can read the message.</p>
+      <button id="again" class="btn ghost" type="button">Edit or make another gift</button>
+    </div>
+  </section>
+
+  <p class="foot">Please Follow me on FB <a href="https://www.facebook.com/alvinmoreno2008" target="_blank">Alvin Rey Moreno</a> to help me grow!</p>
+</main>
+
+<!-- RECEIVER: what the person scanning the QR code sees -->
+<section id="receiver" class="hidden">
+  <button id="back" class="btn ghost hidden" type="button">← Back to creator</button>
+  <div id="stage">
+    <div id="intro">
+      <span id="pop" class="pop" aria-hidden="true">💌</span>
+      <h2 id="rTitle"></h2>
+      <p id="rSub" class="sub"></p>
+      <button id="open" class="btn main" type="button">Open Gift</button>
+    </div>
+    <article id="letter" class="letter hidden">
+      <div id="deco" class="deco" aria-hidden="true"></div>
+      <p id="rDear" class="dear"></p>
+      <p id="rMsg" class="body"></p>
+      <p id="rSign" class="sign"></p>
+    </article>
+  </div>
+</section>
+
+</body>
+</html>
